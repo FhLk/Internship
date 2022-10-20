@@ -1,6 +1,7 @@
 <script setup>
 import { onBeforeMount, ref } from 'vue';
 import { getGame } from '../fetch/fetchGameAPI';
+const emit=defineEmits(['back'])
 const props = defineProps({
     id: Number
 })
@@ -14,17 +15,17 @@ onBeforeMount(async () => {
 <template>
     <div class="bg-[#af9de5] p-10">
         <div class="p-3">
-            <button class="inline-block px-6 py-2.5 
+            <router-link to="/" @click="$emit('back')">
+                <button class="inline-block px-6 py-2.5 
             bg-blue-600 text-white 
             font-medium text-xs 
             leading-tight uppercase 
             rounded shadow-md hover:bg-blue-700 hover:shadow-lg 
             focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 
             active:shadow-lg transition duration-150 ease-in-out">
-                <router-link to="/">
                     Back
-                </router-link>
-            </button>
+                </button>
+            </router-link>
         </div>
         <div class="bg-[#c5c7c6] content-center rounded-lg">
             <div class="flex justify-center">

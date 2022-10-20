@@ -2,6 +2,9 @@
 const props = defineProps({
     list: Array
 })
+
+const emit=defineEmits(['detail'])
+
 </script>
  
 <template>
@@ -11,7 +14,7 @@ const props = defineProps({
         </div>
         <div class="bg-[#c5c7c6] rounded-lg m-10 p-10 grid grid-cols-3 gap-3.5">
             <div class="bg-[#ffffff] rounded-lg p-2 hover:bg-sky-700 " v-for="(game,index) in list" :key="index">
-                <router-link :to="{ name: 'DetailPage', params: {id:game.id}}">
+                <router-link :to="{ name: 'DetailPage', params: {id:game.id}}" @click="$emit('detail',game.title)">
                     <div class="my-3 flex justify-center">
                         <img :src="game.thumbnail" class="rounded-lg" />
                     </div>
